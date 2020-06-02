@@ -35,3 +35,10 @@ create table department(
  
  select * from employees;
  
+select title, salary, name from roles 
+inner join department on role.department_id=department.id;
+
+select first_name, last_name, title, salary, name from employees 
+inner join role on employee.role_id=roles.id 
+inner join department on roles.department_id=department.id;
+ 

@@ -47,22 +47,22 @@ function postDepartment() {
         if (err) throw err;
         console.table(res);
         start();
-    })
+    });
 }
 
 function postRoles() {
-    connection.query(`select title, salary, name from role
-     inner join department on role.department_id=department.id`, function (err, res) {
+    connection.query(`select title, salary, name from roles
+     inner join department on roles.department_id=department.id`, function (err, res) {
         if (err) throw err;
         console.table(res);
         start();
-    })
+    });
 }
 
 function postEmployees() {
-    connection.query(`select first_name, last_name, title, salary, name from employee 
-    inner join role on employee.role_id=role.id 
-    inner join department on role.department_id=department.id`, function (err, res) {
+    connection.query(`select first_name, last_name, title, salary, name from employees 
+    inner join role on employees.role_id=roles.id 
+    inner join department on roles.department_id=department.id`, function (err, res) {
         if (err) throw err;
         console.table(res);
         start();
@@ -107,12 +107,12 @@ function addRole() {
                 choices:departments 
             }
         ])
-        connection.query (`insert into role (title, salary, department_id) values('${roleInfo.title}','${roleInfo.salary}','${roleInfo.department_id}' )`, printResults)
+        connection.query (`insert into roles (title, salary, department_id) values('${roleInfo.title}','${roleInfo.salary}','${roleInfo.department_id}' )`, printResults)
     })
 }
 
 function addEmployee() {
-    connection.query ("select * from role", async function(err, results) {
+    connection.query ("select * from roles", async function(err, results) {
         const roles = results.map ( (result) => ({
             name:result.title, 
             value:result.id
