@@ -156,22 +156,6 @@ async function updateRole(){
                 message: "Which employee ID would you like to update?",
                 choices:employee
             }
-
+        ])
+    })
 }
-
-
-
-
-
-// select title, salary, name from role 
-// inner join department on role.department_id=department.id;
-
-// select first_name, last_name, title, salary, name from employee 
-// inner join role on employee.role_id=role.id 
-// inner join department on role.department_id=department.id;
-
-//{
-//    type: "list",
-//    message:"What would you like to input?",
-//    name:"user_update"
-//   choices: ["Department", "Roles", "Employees"] 
