@@ -13,9 +13,7 @@ connection.connect((err) => {
   if (err) throw err;
   start();
 });
-
 function start() {
-
   inquirer
     .prompt({
       name: "userInput",
@@ -33,9 +31,7 @@ function start() {
       ],
     })
     .then((answer) => {
-
-    const aUser = answer.userInput;
-
+      const aUser = answer.userInput;
       if (aUser === "VIEW_DEPARTMENTS") {
         viewDepartments();
       } else if (aUser === "VIEW_ROLES") {
@@ -56,11 +52,28 @@ function start() {
     });
 }
 
+function redirect() {
+  inquirer
+    .prompt({
+      name: "restart",
+      type: "list",
+      message: "Return to Main Menu?",
+      choices: ["Main-Menu", "Exit"]
+    })
+    .then((answer) => {
+      if (answer.userInput === "Main-Menu") {
+        start();
+      } else {
+        connection.end();
+      }
+    })
+}
+
 function viewDepartments() {
   connection.query("SELECT * FROM department", (err, results) => {
     if (err) throw err;
     console.table(results);
-    start();
+    redirect();
   });
 }
 
@@ -71,7 +84,7 @@ function viewRoles() {
     (err, results) => {
       if (err) throw err;
       console.table(results);
-      start();
+      redirect();
     }
   );
 }
@@ -84,7 +97,7 @@ function viewEmployees() {
     (err, results) => {
       if (err) throw err;
       console.table(results);
-      start();
+      redirect();
     }
   );
 }
@@ -92,7 +105,7 @@ function viewEmployees() {
 function printResults(err, result) {
   if (err) throw err;
   console.log(result);
-  start();
+  redirect();
 }
 
 async function addDepartment() {
