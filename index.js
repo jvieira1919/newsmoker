@@ -15,6 +15,7 @@ connection.connect((err) => {
 });
 
 function start() {
+
   inquirer
     .prompt({
       name: "userInput",
@@ -32,20 +33,22 @@ function start() {
       ],
     })
     .then((answer) => {
-      // based on their answer, either call the bid or the post functions
-      if (answer.userInput === "VIEW_DEPARTMENTS") {
+
+    const aUser = answer.userInput;
+
+      if (aUser === "VIEW_DEPARTMENTS") {
         viewDepartments();
-      } else if (answer.userInput === "VIEW_ROLES") {
+      } else if (aUser === "VIEW_ROLES") {
         viewRoles();
-      } else if (answer.userInput === "VIEW_EMPLOYEES") {
+      } else if (aUser === "VIEW_EMPLOYEES") {
         viewEmployees();
-      } else if (answer.userInput === "ADD_DEPARTMENTS") {
+      } else if (aUser === "ADD_DEPARTMENTS") {
         addDepartment();
-      } else if (answer.userInput === "ADD_ROLES") {
+      } else if (aUser === "ADD_ROLES") {
         addRole();
-      } else if (answer.userInput === "ADD_EMPLOYEES") {
+      } else if (aUser === "ADD_EMPLOYEES") {
         addEmployee();
-      } else if (answer.userInput === "UPDATE_EMPLOYEE_ROLE") {
+      } else if (aUser === "UPDATE_EMPLOYEE_ROLE") {
         update_Employee();
       } else {
         connection.end();
