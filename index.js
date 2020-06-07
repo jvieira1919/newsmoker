@@ -61,7 +61,7 @@ function redirect() {
       choices: ["Main-Menu", "Exit"]
     })
     .then((answer) => {
-      if (answer.userInput === "Main-Menu") {
+      if (answer.restart === "Main-Menu") {
         start();
       } else {
         connection.end();
