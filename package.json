@@ -4,7 +4,7 @@
   "description": "From a small company to a big corporation, from a small sports league to a large school;\r     this app will give you a place with all the information needed to work efficiently.\r     Easy adds, updates, and all from an easy access application.*",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "inquirer": "^7.1.0",
     "mysql": "^2.18.1"
   },
